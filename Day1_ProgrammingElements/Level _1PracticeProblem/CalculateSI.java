@@ -1,4 +1,4 @@
-package Day1_ProgrammingElements;
+// package Day1_ProgrammingElements;
 // Question: 1. Calculate Simple Interest
 
 import java.util.Scanner;

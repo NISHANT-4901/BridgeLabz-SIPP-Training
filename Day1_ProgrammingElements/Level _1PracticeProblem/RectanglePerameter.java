@@ -1,4 +1,4 @@
-package Day1_ProgrammingElements;
+// package Day1_ProgrammingElements;
 // Question: 2. Perimeter of a Rectangle
 
 import java.util.Scanner;

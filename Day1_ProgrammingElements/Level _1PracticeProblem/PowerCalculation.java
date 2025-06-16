@@ -1,4 +1,4 @@
-package Day1_ProgrammingElements;
+// package Day1_ProgrammingElements;
 import java.util.Scanner;
 
 public class PowerCalculation {
