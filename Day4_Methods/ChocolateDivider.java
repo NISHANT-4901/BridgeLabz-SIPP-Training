@@ -12,7 +12,7 @@ public class ChocolateDivider {
 
         System.out.print("Enter total number of children: ");
         int numberOfChildren = scanner.nextInt();
-
+        scanner.close();
         if (numberOfChildren <= 0) {
             System.out.println("Number of children must be greater than zero.");
             return;
@@ -24,6 +24,7 @@ public class ChocolateDivider {
         // Step 3: Display result
         System.out.println("Each child gets: " + result[0] + " chocolate(s)");
         System.out.println("Remaining chocolates: " + result[1]);
+
     }
 
     // Step 2: Method to calculate quotient and remainder
