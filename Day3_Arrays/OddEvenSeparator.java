@@ -9,7 +9,7 @@ public class OddEvenSeparator {
         // Step 1: Get input and check for natural number
         System.out.print("Enter a natural number: ");
         int number = scanner.nextInt();
-
+        scanner.close();
         if (number <= 0) {
             System.out.println("Error: Enter a natural number greater than 0.");
             return;
@@ -41,6 +41,6 @@ public class OddEvenSeparator {
             System.out.print(odd[i] + " ");
         }
 
-        scanner.close();
+        
     }
 }
