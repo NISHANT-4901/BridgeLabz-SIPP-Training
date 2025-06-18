@@ -98,7 +98,7 @@ public class MatrixOperations {
 
         System.out.print("Enter matrix size (2 or 3): ");
         int size = scanner.nextInt();
-
+        scanner.close();
         if (size != 2 && size != 3) {
             System.out.println("Only 2x2 and 3x3 matrices are supported.");
             return;
