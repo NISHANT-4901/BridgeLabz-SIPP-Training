@@ -1,5 +1,5 @@
 package Day2_JavaConstructor;
-
+// I change the name of class to remove the conflict between same name class 
 public class LibraryBook {
     private String title;
     private String author;
