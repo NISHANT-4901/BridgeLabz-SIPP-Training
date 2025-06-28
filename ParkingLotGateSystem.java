@@ -3,50 +3,43 @@ import java.util.Scanner;
 public class ParkingLotGateSystem {
 
     static Scanner sc = new Scanner(System.in);
+    static int parkingCapacity;
+    static int parkedVehicle = 0;
+
+    static {
+        System.out.print("Enter parking capacity: ");
+        parkingCapacity = sc.nextInt();
+    }
 
     public static void main(String[] args) {
-        System.out.println("Enter capacity of parking");
-        int parkingCapacity = sc.nextInt();
-        System.out.println("Enter number of Users");
-        int numberOfUsers = sc.nextInt();
 
-        while (parkingCapacity == 0 || isParkFull(parkingCapacity, numberOfUsers)) {
-            logicBuilding(parkingCapacity, numberOfUsers);
+        while (parkedVehicle < parkingCapacity) {
+            logicBuilding();
         }
 
-        logicBuilding(parkingCapacity, numberOfUsers);
     }
 
-    static void logicBuilding(int numberOfUsers, int parkingCapacity) {
-        int availabity = showOccupancy(parkingCapacity, numberOfUsers);
+    static int userCount = 0;
+
+    static void logicBuilding() {
+        int availabity = parkingCapacity - parkedVehicle;
+
         if (availabity > 0) {
-            park();
+            userCount++;
+            System.out.println("User count: - " + userCount);
+            System.out.println("User parked their vehicle !!");
+            parkedVehicle++;
+
+            System.out.println("Do you want to exit the parking? (true/false)");
+            boolean decision = sc.nextBoolean();
+
+            if (decision == true) {
+                parkedVehicle--;
+            }
+        } else {
+            System.out.println("Sorry but parking is full !!");
         }
-        numberOfUsers--;
-        
-        System.out.println("If you want to exit");
-        boolean decision = sc.nextBoolean();
-        if (decision == true) {
-            numberOfUsers++;
-        }
 
-    }
-
-    static void park() {
-        System.out.println("User parked their vehicle !!");
-    }
-
-    static int showOccupancy(int parkingCapacity, int numberOfUsers) {
-        int calculation = parkingCapacity - numberOfUsers;
-        return calculation;
-    }
-
-    static boolean isParkFull(int parkingCapacity, int numberOfUsers) {
-        if (parkingCapacity == numberOfUsers)
-            return true;
-
-        return false;
-        // TO CHANGE COMMIT
     }
 
 }
