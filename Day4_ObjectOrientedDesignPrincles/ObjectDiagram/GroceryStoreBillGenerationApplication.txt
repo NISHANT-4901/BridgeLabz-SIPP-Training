@@ -1,0 +1,42 @@
+
+---------------------- Class Diagram ---------------------
+
++----------------+          +----------------+         +---------------------+
+|   Customer     |<>------->|    Product     |         |    BillGenerator    |
++----------------+          +----------------+         +---------------------+
+| - name: String |          | - name: String |         | +generateBill()     |
+| - products[]   |          | - quantity: int|         +---------------------+
+|                |          | - pricePerUnit: float    |
++----------------+          +----------------+         Uses Customer to compute
+                                                         total amount
+Composition (filled diamond) on Customer→Product
+
+
+---------------------- Object Diagram ---------------------
+
+        +---------------------+
+        |  Customer: Alice    |
+        |---------------------|
+        | products:           |
+        |   → product1        |
+        |   → product2        |
+        +---------------------+
+               |                        |
+               v                        v
++--------------------------+  +--------------------------+
+|  Product: Apples         |  |  Product: Milk           |
+|--------------------------|  |--------------------------|
+| quantity: 2              |  | quantity: 1              |
+| pricePerUnit: $3         |  | pricePerUnit: $2         |
++--------------------------+  +--------------------------+
+
+---------------------- Sequence Diagram ---------------------
+
+Customer       →       BillGenerator       →        Product
+   |                     |                          |
+   |---- getProducts()-->|                          |
+   |                     |--getDetails() for each-->|
+   |                     |                          |
+   |                     |<-- return price/qty -----|
+   |                     |                          |
+   |<-- return total bill --------------------------|
