@@ -11,7 +11,7 @@ public class Main {
 
         System.out.println("Do you prefer premimum ride ?(true/false)");
         boolean preferPremimumRide = sc.nextBoolean();
-
+        sc.nextLine();
         if (preferPremimumRide) {
             premiumRideSystem();
         } else {
@@ -35,19 +35,26 @@ public class Main {
         RideRepository.addRides("user1", ride1);
         RideRepository.addRides("user2", ride2);
 
-        for (String userID : RideRepository.userRides.keySet()) {
-            Ride[] rides = RideRepository.getRides(userID);
-            System.out.println("----------------------------------------------------");
+        System.out.println("Input user it's userID to view their invoice");
+        String userSpecific = sc.nextLine();
+
+        if (RideRepository.userRides.containsKey(userSpecific)) {
+            RideRepository.getRides(userSpecific);
+            Ride[] rides = RideRepository.getRides(userSpecific);
+            System.out.println("---------------------------------------------");
             for (int i = 0; i < rides.length; i++) {
                 Ride r = rides[i];
-                System.out.println(userID + " --> " + "Distance : - " + r.distance + " Time:- " + r.time);
+                System.out.println(userSpecific + " --> " + "Distance : - " + r.distance + " Time:- " + r.time);
             }
-            System.out.println("----------------------------------------------------");
+            System.out.println("---------------------------------------------");
+
             double totalFare = CalculateFare.normalRide(distance, time);
             InvoiceService summary = new InvoiceService(rides.length, totalFare);
-            System.out.println(userID + ": " + summary);
+            System.out.println(userSpecific + ": " + summary);
+        } else {
+            System.out.println("You mention wrong userID !!");
         }
-        System.out.println("----------------------------------------------------");
+
     }
 
     static void premiumRideSystem() {
@@ -65,19 +72,25 @@ public class Main {
         RideRepository.addRides("user1", ride1);
         RideRepository.addRides("user2", ride2);
 
-        for (String userID : RideRepository.userRides.keySet()) {
-            Ride[] rides = RideRepository.getRides(userID);
-            System.out.println("----------------------------------------------------");
+        System.out.println("Input user it's userID to view their invoice");
+        String userSpecific = sc.nextLine();
+
+        if (RideRepository.userRides.containsKey(userSpecific)) {
+            RideRepository.getRides(userSpecific);
+            Ride[] rides = RideRepository.getRides(userSpecific);
+            System.out.println("---------------------------------------------");
             for (int i = 0; i < rides.length; i++) {
                 Ride r = rides[i];
-                System.out.println(userID + " --> " + "Distance : - " + r.distance + " Time:- " + r.time);
+                System.out.println(userSpecific + " --> " + "Distance : - " + r.distance + " Time:- " + r.time);
             }
-            System.out.println("----------------------------------------------------");
+            System.out.println("---------------------------------------------");
             double totalFare = CalculateFare.premiumRide(distance, time);
             InvoiceService summary = new InvoiceService(rides.length, totalFare);
-            System.out.println(userID + ": " + summary);
+            System.out.println(userSpecific + ": " + summary);
+
+        } else {
+            System.out.println("You mention wrong userID !!");
         }
-        System.out.println("----------------------------------------------------");
 
     }
 }
