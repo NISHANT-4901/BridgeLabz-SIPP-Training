@@ -7,14 +7,15 @@ Use this as your go-to guide to quickly find learning materials per branch and p
 
 
 ============================================================
-📚 Branch Structure
 
-  Core-Java
-  DSA
-  Generics
-  OOPS
-  Workshop
-  main
+### 📚 Branch Structure
+
+- Core-Java  
+- DSA  
+- Generics  
+- OOPS  
+- Workshop  
+- main  
 
 ============================================================
 
