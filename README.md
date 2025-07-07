@@ -5,7 +5,7 @@ This `README.md` file serves as a **day-wise index** across multiple topic branc
 
 Use this as your go-to guide to quickly find learning materials per branch and per day.
 
-```bash
+
 ============================================================
 📚 Branch Structure
 
