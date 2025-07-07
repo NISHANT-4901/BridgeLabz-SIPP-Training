@@ -1,10 +1,9 @@
 # 🚀 Java Immersion Program – Master Index
 
 Welcome to the **Java Immersion Program** repository!  
-This `README.md` file serves as a **day-wise index** across multiple topic branches.
+This `README.md` file serves as a **day-wise index** across multiple topic branches.  
 
-Use this as your go-to guide to quickly find learning materials per branch and per day.
-
+Use this as your go-to guide to quickly find learning materials per branch and per day.  
 
 ============================================================
 
@@ -19,11 +18,11 @@ Use this as your go-to guide to quickly find learning materials per branch and p
 
 ============================================================
 
-🔰 Branch: Core-Java
+🔰 Branch: Core-Java  
 
 ============================================================
 
-✅ Day 1 – Programming Elements
+✅ Day 1 – Programming Elements  
 • Java Comments  
 • Java Basic Data Types  
 • Java Variables  
@@ -33,11 +32,11 @@ Use this as your go-to guide to quickly find learning materials per branch and p
 • Taking User Input in Programs  
 
 🔗 GitHub: Core-Java/Day1_ProgrammingElements  
-https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day1_ProgrammingElements
+https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day1_ProgrammingElements  
 
 ------------------------------------------------------------
 
-✅ Day 2 – Java Control Flow
+✅ Day 2 – Java Control Flow  
 • Java Control Flows  
 • Java boolean Data Type  
 • Boolean Expressions  
@@ -48,11 +47,11 @@ https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day1_Pro
 • switch Statement  
 
 🔗 GitHub: Core-Java/Day2_JavaControlFlows  
-https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day2_JavaControlFlows
+https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day2_JavaControlFlows  
 
 ------------------------------------------------------------
 
-✅ Day 3 – Arrays
+✅ Day 3 – Arrays  
 • Java Arrays  
 • Creating and Accessing Arrays  
 • Array Access via for Loop  
@@ -64,11 +63,11 @@ https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day2_Jav
 • System.err() and System.exit()  
 
 🔗 GitHub: Core-Java/Day3_Arrays  
-https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day3_Arrays
+https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day3_Arrays  
 
 ------------------------------------------------------------
 
-✅ Day 4 – Strings & Exceptions
+✅ Day 4 – Strings & Exceptions  
 • Java Strings  
 • Escape Sequences and String Creation  
 • Taking String Input  
@@ -81,11 +80,11 @@ https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day3_Arr
 • Unchecked vs. Checked Exceptions  
 
 🔗 GitHub: Core-Java/Day4_StringAndException  
-https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day4_StringAndException
+https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day4_StringAndException  
 
 ------------------------------------------------------------
 
-✅ Day 5 – Methods
+✅ Day 5 – Methods  
 • User-Defined Methods  
 • Using Methods Multiple Times  
 • Dynamic Parameters  
@@ -95,54 +94,54 @@ https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day4_Str
 • java.lang.Math Class  
 
 🔗 GitHub: Core-Java/Day5_Methods  
-https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day5_Methods
+https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Core-Java/Day5_Methods  
 
 ============================================================
 
-🔰 Branch: OOPS
+🔰 Branch: OOPS  
 
 ============================================================
 
-✅ Day 1 – OOP Fundamentals
+✅ Day 1 – OOP Fundamentals  
 • Principles of Object-Oriented Programming  
 
 🔗 GitHub: OOPS/Day1_Object-orientedProgrammingFundamental  
-https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/OOPS/Day1_Object-orientedProgrammingFundamental
+https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/OOPS/Day1_Object-orientedProgrammingFundamental  
 
 ------------------------------------------------------------
 
-✅ Day 2 – Constructors & Access
+✅ Day 2 – Constructors & Access  
 • Java Constructors  
 • Instance vs. Class Variables  
 • Access Modifiers  
 
 🔗 GitHub: OOPS/Day2_JavaConstructor  
-https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/OOPS/Day2_JavaConstructor
+https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/OOPS/Day2_JavaConstructor  
 
 ------------------------------------------------------------
 
-✅ Day 3 – Special Keywords & Tools
+✅ Day 3 – Special Keywords & Tools  
 • this, static, final Keywords  
 • instanceof Operator  
 • Eclipse IDE Usage  
 
 🔗 GitHub: OOPS/Day3_thisStaticFinalKeywords  
-https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/OOPS/Day3_thisStaticFinalKeywords
+https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/OOPS/Day3_thisStaticFinalKeywords  
 
 ------------------------------------------------------------
 
-✅ Day 4 – Object Modeling
+✅ Day 4 – Object Modeling  
 • Classes vs. Objects  
 • Class Diagrams  
 • Object Diagrams  
 • Sequence Diagrams  
 
 🔗 GitHub: OOPS/Day4_ObjectOrientedDesignPrincles  
-https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/OOPS/Day4_ObjectOrientedDesignPrincles
+https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/OOPS/Day4_ObjectOrientedDesignPrincles  
 
 ------------------------------------------------------------
 
-✅ Day 5 – Inheritance & Overriding
+✅ Day 5 – Inheritance & Overriding  
 • Single, Multilevel, Hierarchical Inheritance  
 • Inheritance Features  
 • Method Overriding  
@@ -151,30 +150,30 @@ https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/OOPS/Day4_ObjectOr
 • Access Modifiers and Inheritance  
 
 🔗 GitHub: OOPS/Day5_Inheritance  
-https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/OOPS/Day5_Inheritance
+https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/OOPS/Day5_Inheritance  
 
 ------------------------------------------------------------
 
-✅ Day 6 – Abstraction & Interfaces
+✅ Day 6 – Abstraction & Interfaces  
 • Encapsulation  
 • Polymorphism  
 • Interfaces  
 • Abstract Classes  
 
 🔗 GitHub: OOPS/Day6_EncapPolymorInterAbst  
-https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/OOPS/Day6_EncapPolymorInterAbst
+https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/OOPS/Day6_EncapPolymorInterAbst  
 
 ============================================================
 
-🔰 Branch: Workshop
+🔰 Branch: Workshop  
 
 ============================================================
 
-✅ Problem Statements:
+✅ Problem Statements:  
 • Coffee Counter Chronicles  
 • Parking Lot Gate System  
 • Election Booth Manager  
 • Cab Invoice Generator  
 
 🔗 GitHub: Workshop  
-https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Workshop
+https://github.com/NISHANT-4901/BridgeLabz-SIPP-Training/tree/Workshop  
