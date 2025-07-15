@@ -1,0 +1,36 @@
+Question 3: Example 4 – O(log N) - Logarithmic Time (Binary Search)
+
+Code:
+public class BinarySearchExample {
+    public static int binarySearch(int[] arr, int target) {
+        int left = 0, right = arr.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] == target)
+                return mid;
+            else if (arr[mid] < target)
+                left = mid + 1;
+            else
+                right = mid - 1;
+        }
+        return -1;  // Element not found
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {2, 4, 6, 8, 10, 12};
+        System.out.println(binarySearch(arr, 10)); // Output: 4
+    }
+}
+
+Time Complexity Analysis:
+- Let N be the number of elements in the array.
+- In every iteration, the algorithm halves the search space.
+- First iteration: N elements
+- Second iteration: N/2 elements
+- Third iteration: N/4 elements
+- ...
+- This continues until the size becomes 1 (base case).
+- Number of iterations ≈ log₂(N)
+
+✅ Time Complexity: O(log N)
+The number of operations grows logarithmically with input size. Efficient for large, sorted datasets.
