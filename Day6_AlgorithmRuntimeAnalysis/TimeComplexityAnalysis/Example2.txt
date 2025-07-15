@@ -1,0 +1,20 @@
+Question 3: Example 2 – O(N) - Linear Time
+
+Code:
+public class LinearTimeExample {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        for (int num : arr) {
+            System.out.println(num);  // Executes N times
+        }
+    }
+}
+
+Time Complexity Analysis:
+- Let N be the size of the array.
+- The `for-each` loop runs once for each element in the array.
+- The statement inside the loop (System.out.println) executes N times.
+- No nested loops or recursive calls are present.
+
+✅ Time Complexity: O(N)
+As input size N increases, execution time increases proportionally.
