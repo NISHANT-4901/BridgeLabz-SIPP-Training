@@ -1,0 +1,19 @@
+Example 2 – O(N) - Linear Space
+
+Code:
+public class LinearSpaceExample {
+    public static int[] copyArray(int[] arr) {
+        int[] newArr = new int[arr.length]; // New array of size N
+        System.arraycopy(arr, 0, newArr, 0, arr.length);
+        return newArr;
+    }
+}
+
+Space Complexity Analysis:
+- Let N be the size of the input array `arr`.
+- The method creates a new array `newArr` of the same size as the input → takes O(N) extra space.
+- `System.arraycopy` only copies values and does not affect space complexity.
+- There are no other major variables or data structures allocated.
+
+✅ Space Complexity: O(N)
+The algorithm uses memory proportional to the input size.
