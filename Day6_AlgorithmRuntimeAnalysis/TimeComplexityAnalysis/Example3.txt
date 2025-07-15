@@ -1,0 +1,23 @@
+Question 3: Example 3 – O(N²) - Quadratic Time (Nested Loops)
+
+Code:
+public class QuadraticTimeExample {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4};
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                System.out.println(arr[i] + ", " + arr[j]);  // Nested loops
+            }
+        }
+    }
+}
+
+Time Complexity Analysis:
+- Let N be the length of the array.
+- Outer loop: runs N times → O(N)
+- Inner loop: for each iteration of the outer loop, runs N times → O(N)
+- The print statement inside the inner loop executes N × N = N² times.
+- There are no early exits, recursion, or constant-time operations that dominate.
+
+✅ Time Complexity: O(N²)
+As input size N grows, the number of operations grows proportionally to the square of N (N × N).
