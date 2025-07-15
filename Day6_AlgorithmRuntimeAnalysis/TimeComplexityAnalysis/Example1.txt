@@ -1,0 +1,23 @@
+Question 3: Time Complexity Analysis
+
+Time complexity depends on the number of operations executed as input size increases.
+
+Example 1: O(1) - Constant Time
+
+Code:
+public class ConstantTimeExample {
+    public static void main(String[] args) {
+        int a = 5, b = 10;
+        int sum = a + b;  // Always takes one operation
+        System.out.println("Sum: " + sum);
+    }
+}
+
+Time Complexity Analysis:
+- The variable assignment `int a = 5, b = 10;` is done in constant time → O(1).
+- The addition `int sum = a + b;` is a single arithmetic operation → O(1).
+- The print statement `System.out.println(...)` also executes once → O(1).
+- There are no loops, recursion, or input-dependent branches.
+
+✅ Time Complexity: O(1)
+All operations execute a fixed number of times, regardless of the input size. Execution time stays constant.
