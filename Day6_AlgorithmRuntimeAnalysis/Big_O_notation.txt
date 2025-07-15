@@ -1,0 +1,27 @@
+Question 2: Understanding Big-O Notation
+
+Big-O notation describes the upper bound of an algorithm's complexity,
+representing the worst-case scenario in terms of execution time and space required.
+
+Common Big-O Notations:
+
+1. O(1) – Constant Time
+   Execution time remains constant regardless of input size.
+
+2. O(log N) – Logarithmic Time
+   Time grows logarithmically as input size increases.
+
+3. O(N) – Linear Time
+   Execution time increases proportionally to input size.
+
+4. O(N log N) – Linearithmic Time
+   Common in efficient sorting algorithms like Merge Sort.
+
+5. O(N²) – Quadratic Time
+   Execution time grows as the square of input size (e.g., nested loops).
+
+6. O(2^N) – Exponential Time
+   Very slow; time doubles with each increase in input size.
+
+7. O(N!) – Factorial Time
+   Extremely slow; common in brute-force permutations.
