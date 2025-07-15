@@ -6,10 +6,12 @@ class MyHashMap<K, V> {
     private static final int size = 16;
     private LinkedList<Entry<K, V>>[] buckets;
 
+    @SuppressWarnings("unchecked")
     public MyHashMap() {
-        buckets = new LinkedList[size];
-        for (int i = 0; i < size; i++)
+        buckets = (LinkedList<Entry<K, V>>[]) new LinkedList[size];
+        for (int i = 0; i < size; i++) {
             buckets[i] = new LinkedList<>();
+        }
     }
 
     private int getIndex(K key) {
@@ -20,7 +22,7 @@ class MyHashMap<K, V> {
         int index = getIndex(key);
         for (Entry<K, V> entry : buckets[index]) {
             if (entry.key.equals(key)) {
-                entry.value = value; // Overwrite if key exists
+                entry.value = value;
                 return;
             }
         }

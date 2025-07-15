@@ -1,6 +1,5 @@
 package Day4_5_LinerAndBinarySearch;
 
-import java.util.*;
 
 public class SearchChallenge_LinearAndBinary {
 
