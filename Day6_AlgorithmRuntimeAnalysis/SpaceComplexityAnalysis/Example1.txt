@@ -1,0 +1,18 @@
+
+Example 1: O(1) - Constant Space
+
+Code:
+public class ConstantSpaceExample {
+    public static int sum(int a, int b) {
+        return a + b; // Uses fixed memory
+    }
+}
+
+Space Complexity Analysis:
+- The function takes two integer inputs (a and b).
+- It uses a single primitive operation (addition), and no extra data structures or memory is allocated.
+- The return value is also a single integer, occupying constant space.
+- No memory usage depends on input size.
+
+✅ Space Complexity: O(1)
+The algorithm uses a fixed amount of memory regardless of the input size.
