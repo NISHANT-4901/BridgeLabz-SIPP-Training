@@ -1,0 +1,10 @@
+Question 1: What is Runtime Analysis?
+
+Runtime analysis evaluates how an algorithm's performance (time and space) scales with input size. 
+The goal is to determine the efficiency of an algorithm before actual implementation.
+
+There are two primary aspects:
+1. Time Complexity – How much time the algorithm takes as input size grows.
+2. Space Complexity – How much extra memory the algorithm uses.
+
+Runtime analysis is often expressed using Big-O notation to describe the upper bound of time or space required.
