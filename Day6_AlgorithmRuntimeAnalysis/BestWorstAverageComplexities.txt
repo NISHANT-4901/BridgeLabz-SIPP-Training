@@ -1,0 +1,11 @@
+In algorithm analysis, time complexity varies depending on the scenario:
+- Best Case: Fastest possible time (ideal input).
+- Average Case: Expected time for random input.
+- Worst Case: Slowest possible time (bad input).
+
+Explanation:
+- **Linear Search** is fastest when the item is found in the first position.
+- **Binary Search** has the same complexity in all scenarios, assuming sorted data.
+- **Bubble Sort** improves in best case with an optimized version that stops early.
+- **Merge Sort** always performs consistently due to divide-and-conquer approach.
+- **Quick Sort** is efficient generally, but has a bad worst case on already sorted or unbalanced data.
