@@ -8,7 +8,7 @@ class Question {
     public static Map<String, List<Map<Character, String>>> options = new HashMap<>();
 
     static {
-        // 🧠 COMPUTER NETWORK
+        // COMPUTER NETWORK
         questionTexts.put("Computer Network", Arrays.asList(
                 "Which protocol is used for fast unreliable transmission?",
                 "Which OSI layer handles physical addressing?",
@@ -23,7 +23,7 @@ class Question {
                 Map.of('a', "Fiber", 'b', "Router", 'c', "Switch", 'd', "Bridge"),
                 Map.of('a', "OSI", 'b', "LAN", 'c', "MAC", 'd', "NIC")));
 
-        // 🧠 OPERATING SYSTEM
+        // OPERATING SYSTEM
         questionTexts.put("Operating System", Arrays.asList(
                 "What is the core part of an OS?",
                 "Which of these is a deadlock condition?",
@@ -38,7 +38,7 @@ class Question {
                 Map.of('a', "Ready", 'b', "Wait", 'c', "Run", 'd', "Exit"),
                 Map.of('a', "Multitasking", 'b', "Debugging", 'c', "Virtualization", 'd', "BIOS")));
 
-        // 🧠 DSA
+        // DSA
         questionTexts.put("DSA", Arrays.asList(
                 "Which data structure uses FIFO?",
                 "What is time complexity of linear search?",
