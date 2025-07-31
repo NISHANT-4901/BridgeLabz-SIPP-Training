@@ -27,7 +27,7 @@ public class Main {
 
         System.out.print("Enter your choice (1-3): ");
         int choice = sc.nextInt();
-        sc.nextLine(); // consume newline
+
 
         // Step 4: Validate subject selection
         if (choice < 1 || choice > subjects.size()) {
