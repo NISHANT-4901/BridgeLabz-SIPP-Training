@@ -69,7 +69,7 @@ public class Main {
         System.out.println("Student: " + name);
         System.out.println("Roll No: " + roll);
         System.out.println("Subject: " + selectedSubject);
-        System.out.println("Score: " + score + " / " + questions.size());
+        System.out.println("Score: " + score + " / " + 10);
 
         sc.close();
     }
