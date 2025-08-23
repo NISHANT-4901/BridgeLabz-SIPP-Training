@@ -1,0 +1,107 @@
+interface Searchable {
+    Method search(keyword)
+}
+
+interface Printable {
+    Method print()
+}
+
+abstract class MedicalReport implements Searchable, Printable {
+    Attribute patientName
+    Attribute reportDate
+
+    Constructor(patientName, reportDate){
+        set patientName = patientName
+        set reportDate = reportDate
+    }
+}
+
+class LabReport extend MedicalReport {
+    Attribute testType
+    Attribute result
+
+    Constructor(patientName, reportDate, testType, result){
+        super(patientName, reportDate)
+        set testType = testType
+        set result = result
+    }
+
+    Method search(keyword){
+        if testType contains keyword OR result contains keyword then
+            return true
+        else
+            return false
+    }
+
+    Method print(){
+        Print "--- Lab Report ---"
+        Print "Patient: " + patientName
+        Print "Date: " + reportDate
+        Print "Test: " + testType + ", Result: " + result
+    }
+}
+
+class Prescription extend MedicalReport {
+    Attribute doctorName
+    Attribute medicines   // List<String>
+
+    Constructor(patientName, reportDate, doctorName, medicines){
+        super(patientName, reportDate)
+        set doctorName = doctorName
+        set medicines = medicines
+    }
+
+    Method search(keyword){
+        if doctorName contains keyword OR medicines contains keyword then
+            return true
+        else
+            return false
+    }
+
+    Method print(){
+        Print "--- Prescription ---"
+        Print "Patient: " + patientName
+        Print "Date: " + reportDate
+        Print "Doctor: " + doctorName
+        Print "Medicines: " + medicines
+    }
+}
+
+class MedicalRecordManager {
+    Attribute records   // List<MedicalReport>
+
+    Constructor(){
+        records = new List()
+    }
+
+    Method addRecord(record){
+        records.add(record)
+    }
+
+    Method searchRecords(keyword){
+        Print "Search results for: " + keyword
+        For each record in records:
+            if record.search(keyword) then
+                record.print()
+    }
+
+    Method printAllRecords(){
+        For each record in records:
+            record.print()
+    }
+}
+
+class Main {
+    Method run(){
+        manager = new MedicalRecordManager()
+
+        r1 = new LabReport("Amit", "2025-08-01", "Blood Test", "Normal")
+        r2 = new Prescription("Amit", "2025-08-02", "Dr. Sharma", ["Paracetamol", "Vitamin D"])
+
+        manager.addRecord(r1)
+        manager.addRecord(r2)
+
+        manager.printAllRecords()
+        manager.searchRecords("Vitamin")
+    }
+}

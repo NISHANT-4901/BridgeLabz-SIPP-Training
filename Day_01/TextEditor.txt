@@ -1,0 +1,30 @@
+class TextEditor {
+    Attribute text
+    Attribute undoStack   // Stack to store previous states
+
+    Constructor(){
+        set text = ""
+        set undoStack = new Stack()
+    }
+
+    Method write(newText){
+        push current text into undoStack
+        text = text + newText
+    }
+
+    Method delete(count){
+        push current text into undoStack
+        text = text without last 'count' characters
+    }
+
+    Method undo(){
+        if undoStack is not empty then
+            text = pop from undoStack
+        else
+            Print "Nothing to undo"
+    }
+
+    Method show(){
+        Print text
+    }
+}

@@ -1,0 +1,41 @@
+function solveMaze(maze, x, y, solution):
+    if (x, y) is outside maze boundaries:
+        return false
+
+    if (x, y) is the destination cell:
+        mark (x, y) in solution
+        return true
+
+    if (x, y) is a valid path and not yet visited:
+        mark (x, y) in solution
+
+        // Move Down
+        if solveMaze(maze, x+1, y, solution) == true:
+            return true
+
+        // Move Right
+        if solveMaze(maze, x, y+1, solution) == true:
+            return true
+
+        // Move Up
+        if solveMaze(maze, x-1, y, solution) == true:
+            return true
+
+        // Move Left
+        if solveMaze(maze, x, y-1, solution) == true:
+            return true
+
+        // Backtrack
+        unmark (x, y) in solution
+        return false
+
+    return false
+
+
+MAIN:
+    initialize maze[N][N] with 1 as path and 0 as wall
+    initialize solution[N][N] with 0
+    if solveMaze(maze, 0, 0, solution) == true:
+        print solution path
+    else:
+        print "No solution exists"

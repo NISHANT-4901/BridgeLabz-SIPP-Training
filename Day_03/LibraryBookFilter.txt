@@ -1,0 +1,25 @@
+Class Book
+    Attributes:
+        title
+        author
+        year
+        rating
+
+Main Program:
+    Create List<Book> books
+
+    // Add some books to the list
+    books.add(Book("Book A", "Author1", 2014, 4.8))
+    books.add(Book("Book B", "Author2", 2017, 4.6))
+    books.add(Book("Book C", "Author3", 2020, 4.3))
+    books.add(Book("Book D", "Author4", 2019, 4.9))
+
+    // Use Stream + filter + lambda
+    filteredBooks = books.stream()
+                         .filter(book -> book.year > 2015)     
+                         .filter(book -> book.rating > 4.5)    
+                         .collect(toList)
+
+    // Print results
+    For each book in filteredBooks:
+        Print book.title, book.year, book.rating
