@@ -1,0 +1,37 @@
+class DailyTasksOrganizer {
+    Attribute tasks  
+    Attribute nextTaskID
+
+    Constructor() {
+        set tasks = new LinkedHashMap()
+        set nextTaskID = 1
+    }
+
+    Method addTask(description) {
+        tasks[nextTaskID] = description
+        nextTaskID = nextTaskID + 1
+    }
+
+    Method removeTask(taskID) {
+        if tasks contains taskID then
+            remove tasks[taskID]
+        else
+            Print "Task ID " + taskID + " not found"
+    }
+
+    Method viewTasks() {
+        for each taskID in tasks.keys() do
+            Print taskID + " → " + tasks[taskID]
+    }
+}
+
+organizer = new DailyTasksOrganizer()
+organizer.addTask("Check emails")
+organizer.addTask("Prepare sales report")
+organizer.addTask("Call client")
+
+organizer.viewTasks()
+
+organizer.removeTask(2)
+
+organizer.viewTasks()

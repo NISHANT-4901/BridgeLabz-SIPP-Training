@@ -1,0 +1,52 @@
+class AttendanceTracker {
+    Attribute attendanceGrid  
+    Attribute numStudents
+    Attribute numDays
+
+    Constructor(numStudents, numDays) {
+        set numStudents = numStudents
+        set numDays = numDays
+        attendanceGrid = new 2D Array[numStudents][numDays]
+        for i from 0 to numStudents-1 do
+            for j from 0 to numDays-1 do
+                attendanceGrid[i][j] = 'A'
+    }
+
+    Method markAttendance(studentIndex, day, status) {
+        if studentIndex >= 0 and studentIndex < numStudents and day > 0 and day <= numDays then
+            attendanceGrid[studentIndex][day - 1] = status
+        else
+            Print "Invalid student or day"
+    }
+
+    Method updateAttendance(studentIndex, day, status) {
+        call markAttendance(studentIndex, day, status)
+    }
+
+    Method getMonthlyReport(studentIndex) {
+        if studentIndex < 0 or studentIndex >= numStudents then
+            Print "Invalid student"
+            return
+
+        presentCount = 0
+        for day from 0 to numDays-1 do
+            if attendanceGrid[studentIndex][day] == 'P' then
+                presentCount = presentCount + 1
+
+        Print "Student " + (studentIndex + 1) + " was present for " + presentCount + " days."
+    }
+}
+
+tracker = new AttendanceTracker(5, 31)
+
+tracker.markAttendance(0, 1, 'P')
+tracker.markAttendance(0, 2, 'P')
+tracker.markAttendance(0, 3, 'A')
+tracker.markAttendance(0, 4, 'P')
+tracker.markAttendance(0, 5, 'P')
+tracker.markAttendance(0, 6, 'P')
+tracker.markAttendance(0, 7, 'A')
+
+tracker.updateAttendance(0, 3, 'P')
+
+tracker.getMonthlyReport(0)

@@ -1,0 +1,107 @@
+class Ticket {
+    Attribute movieName
+    Attribute seatNumber
+    Attribute price
+    Attribute isBooked
+
+    Constructor(movieName, seatNumber, price) {
+        set movieName = movieName
+        set seatNumber = seatNumber
+        set price = price
+        set isBooked = false
+    }
+
+    Method book() {
+        if isBooked == false then
+            isBooked = true
+            Print "Ticket booked for " + movieName + " Seat: " + seatNumber
+        else
+            Print "Seat already booked"
+    }
+
+    Method cancel() {
+        if isBooked == true then
+            isBooked = false
+            Print "Ticket for " + movieName + " Seat: " + seatNumber + " cancelled"
+        else
+            Print "Ticket is not booked"
+    }
+}
+
+class Theatre {
+    Attribute name
+    Attribute movieSchedules  // Map<movieName, List<showTimes>>
+    Attribute seatMap  // Map<showTime, Map<seatNumber, Ticket>>
+
+    Constructor(name) {
+        set name = name
+        set movieSchedules = new Map()
+        set seatMap = new Map()
+    }
+
+    Method addMovieSchedule(movieName, showTimes) {
+        movieSchedules[movieName] = showTimes
+        for each showTime in showTimes do
+            if seatMap does not contain showTime then
+                seatMap[showTime] = new Map()
+    }
+
+    Method issueTicket(movieName, showTime, seatNumber, price) {
+        if movieSchedules[movieName] contains showTime then
+            seats = seatMap[showTime]
+            if seats does not contain seatNumber then
+                ticket = new Ticket(movieName, seatNumber, price)
+                ticket.book()
+                seats[seatNumber] = ticket
+                return ticket
+            else
+                existingTicket = seats[seatNumber]
+                if existingTicket.isBooked == false then
+                    existingTicket.book()
+                    return existingTicket
+                else
+                    Print "Seat not available"
+                    return null
+        else
+            Print "Show time not available"
+            return null
+    }
+
+    Method cancelTicket(ticket) {
+        if ticket != null and ticket.isBooked == true then
+            ticket.cancel()
+            showTimeSeats = seatMap[ticket.movieName]
+            showTimeSeats[ticket.seatNumber] = ticket
+        else
+            Print "Ticket cannot be cancelled"
+    }
+}
+
+class Customer {
+    Attribute name
+    Attribute bookedTickets  // List<Ticket>
+
+    Constructor(name) {
+        set name = name
+        set bookedTickets = new List()
+    }
+
+    Method bookTicket(theatre, movieName, showTime, seatNumber, price) {
+        ticket = theatre.issueTicket(movieName, showTime, seatNumber, price)
+        if ticket != null then
+            append ticket to bookedTickets
+    }
+
+    Method cancelTicket(theatre, ticket) {
+        theatre.cancelTicket(ticket)
+        remove ticket from bookedTickets
+    }
+}
+
+theatre = new Theatre("Cineplex")
+theatre.addMovieSchedule("Avengers: Endgame", ["18:00", "21:00"])
+
+customer = new Customer("Ravi")
+customer.bookTicket(theatre, "Avengers: Endgame", "18:00", "A12", 300)
+ticket = customer.bookedTickets[0]
+customer.cancelTicket(theatre, ticket)

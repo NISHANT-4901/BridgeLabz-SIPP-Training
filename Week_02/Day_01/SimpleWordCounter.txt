@@ -1,0 +1,47 @@
+class WordCounter {
+    Method normalizeText(text) {
+        lowerText = toLowerCase(text)
+        cleanText = removePunctuation(lowerText)
+        return cleanText
+    }
+
+    Method removePunctuation(text) {
+        result = ""
+        for each char in text do
+            if char is letter or char is digit or char is space then
+                result = result + char
+        return result
+    }
+
+    Method countWords(text) {
+        cleanText = normalizeText(text)
+        words = split cleanText by space
+        wordCountMap = new Map()
+
+        for each word in words do
+            if wordCountMap contains word then
+                wordCountMap[word] = wordCountMap[word] + 1
+            else
+                wordCountMap[word] = 1
+
+        return wordCountMap
+    }
+
+    Method sortByFrequency(wordCountMap) {
+        entries = list of (word, count) from wordCountMap
+        sort entries by count descending
+        return entries
+    }
+
+    Method displayWordCounts(sortedEntries) {
+        for each (word, count) in sortedEntries do
+            Print word + " (" + count + ")"
+    }
+}
+
+text = "The news today is about the rise in technology trends."
+
+counter = new WordCounter()
+wordCounts = counter.countWords(text)
+sortedEntries = counter.sortByFrequency(wordCounts)
+counter.displayWordCounts(sortedEntries)

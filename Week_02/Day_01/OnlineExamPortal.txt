@@ -1,0 +1,68 @@
+class User {
+    Attribute username
+    Attribute password
+
+    Constructor(username, password) {
+        set username = username
+        set password = password
+    }
+
+    Method login(inputUsername, inputPassword) {
+        if inputUsername == username and inputPassword == password then
+            Print "Login successful"
+            return true
+        else
+            Print "Invalid credentials"
+            return false
+    }
+}
+
+class Student extends User {
+    Attribute enrolledCourses
+
+    Constructor(username, password, enrolledCourses) {
+        call super(username, password)
+        set enrolledCourses = enrolledCourses
+    }
+
+    Method login(inputUsername, inputPassword) {
+        if inputUsername == username and inputPassword == password then
+            if enrolledCourses is not empty then
+                Print "Student login successful. Available exams shown."
+                return true
+            else
+                Print "Student not enrolled in any courses"
+                return false
+        else
+            Print "Invalid student credentials"
+            return false
+    }
+}
+
+class Admin extends User {
+    Attribute isAdmin
+
+    Constructor(username, password, isAdmin) {
+        call super(username, password)
+        set isAdmin = isAdmin
+    }
+
+    Method login(inputUsername, inputPassword) {
+        if inputUsername == username and inputPassword == password then
+            if isAdmin == true then
+                Print "Admin login successful. Exam management tools shown."
+                return true
+            else
+                Print "User lacks admin privileges"
+                return false
+        else
+            Print "Invalid admin credentials"
+            return false
+    }
+}
+
+student = new Student("john123", "pass123", ["CS101", "MATH202"])
+student.login("john123", "pass123")
+
+admin = new Admin("admin1", "adminpass", true)
+admin.login("admin1", "adminpass")

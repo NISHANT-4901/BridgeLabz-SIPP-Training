@@ -1,0 +1,94 @@
+class BusStopNode {
+    Attribute name
+    Attribute next
+
+    Constructor(name) {
+        set name = name
+        set next = null
+    }
+}
+
+class BusRoute {
+    Attribute head
+
+    Constructor() {
+        set head = null
+    }
+
+    Method addStopAtEnd(name) {
+        newNode = new BusStopNode(name)
+        if head == null then
+            head = newNode
+            return
+        current = head
+        while current.next != null do
+            current = current.next
+        current.next = newNode
+    }
+
+    Method addStopAfter(existingStopName, newStopName) {
+        current = head
+        while current != null do
+            if current.name == existingStopName then
+                newNode = new BusStopNode(newStopName)
+                newNode.next = current.next
+                current.next = newNode
+                return
+            current = current.next
+        Print existingStopName + " not found"
+    }
+
+    Method removeStop(stopName) {
+        if head == null then
+            return
+        if head.name == stopName then
+            head = head.next
+            return
+        current = head
+        while current.next != null and current.next.name != stopName do
+            current = current.next
+        if current.next != null then
+            current.next = current.next.next
+        else
+            Print stopName + " not found"
+    }
+
+    Method searchStop(stopName) {
+        current = head
+        while current != null do
+            if current.name == stopName then
+                Print stopName + " is on the route"
+                return true
+            current = current.next
+        Print stopName + " is not on the route"
+        return false
+    }
+
+    Method displayRoute() {
+        current = head
+        routeStr = ""
+        while current != null do
+            routeStr = routeStr + current.name
+            if current.next != null then
+                routeStr = routeStr + " → "
+            current = current.next
+        Print "Bus Route: " + routeStr
+    }
+}
+
+route = new BusRoute()
+route.addStopAtEnd("Depot")
+route.addStopAtEnd("Main Street")
+route.addStopAtEnd("City Mall")
+route.addStopAtEnd("Hospital")
+route.addStopAtEnd("Airport")
+
+route.displayRoute()
+
+route.addStopAfter("City Mall", "University Stop")
+route.displayRoute()
+
+route.removeStop("Hospital")
+route.displayRoute()
+
+route.searchStop("Airport")
