@@ -1,0 +1,65 @@
+class Doctor {
+    Attribute id
+    Attribute name
+    Attribute specialization
+
+    Constructor(id, name, specialization){
+        set id = id
+        set name = name
+        set specialization = specialization
+    }
+
+    Method show(){
+        Print "Doctor ID: " + id + 
+              ", Name: " + name + 
+              ", Specialization: " + specialization
+    }
+}
+
+class Hospital {
+    Attribute departmentMap   // Map<String, List<Doctor>>
+
+    Constructor(){
+        departmentMap = new Map()
+    }
+
+    Method addDoctor(department, doctor){
+        if department not in departmentMap then
+            departmentMap.put(department, new List())
+        departmentMap.get(department).add(doctor)
+    }
+
+    Method showAllDepartments(){
+        For each (dept, doctors) in departmentMap:
+            Print "Department: " + dept
+            For each doc in doctors:
+                doc.show()
+    }
+
+    Method filterBySpecialization(specialization){
+        Print "Doctors with specialization: " + specialization
+        For each (dept, doctors) in departmentMap:
+            For each doc in doctors:
+                if doc.specialization == specialization then
+                    Print "Department: " + dept
+                    doc.show()
+    }
+}
+
+class Main {
+    Method run(){
+        hospital = new Hospital()
+
+        d1 = new Doctor(101, "Dr. Mehta", "Cardiology")
+        d2 = new Doctor(102, "Dr. Sharma", "Neurology")
+        d3 = new Doctor(103, "Dr. Roy", "Cardiology")
+
+        hospital.addDoctor("Heart Dept", d1)
+        hospital.addDoctor("Brain Dept", d2)
+        hospital.addDoctor("Heart Dept", d3)
+
+        hospital.showAllDepartments()
+
+        hospital.filterBySpecialization("Cardiology")
+    }
+}

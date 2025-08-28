@@ -1,0 +1,41 @@
+DEFINE CLASS Patient
+    ATTRIBUTES: patientID, name, age, disease
+    METHOD: constructor(patientID, name, age, disease)
+
+DEFINE CLASS PatientRecordManager
+    ATTRIBUTE: records ← new HashMap<patientID, Patient>
+
+    METHOD addPatient(patient)
+        records[patient.patientID] ← patient
+
+    METHOD getPatient(patientID)
+        RETURN records[patientID]
+
+    METHOD updatePatient(patientID, updatedPatient)
+        IF patientID IN records
+            records[patientID] ← updatedPatient
+        ELSE
+            PRINT "Patient not found"
+
+    METHOD deletePatient(patientID)
+        IF patientID IN records
+            REMOVE records[patientID]
+        ELSE
+            PRINT "Patient not found"
+
+MAIN PROGRAM
+    CREATE manager ← new PatientRecordManager()
+
+    CREATE p1 ← new Patient(101, "John", 30, "Fever")
+    CREATE p2 ← new Patient(102, "Alice", 25, "Flu")
+
+    manager.addPatient(p1)
+    manager.addPatient(p2)
+
+    PRINT manager.getPatient(101)
+
+    UPDATE record: manager.updatePatient(101, new Patient(101, "John", 31, "Recovered"))
+
+    DELETE record: manager.deletePatient(102)
+
+    PRINT manager.getPatient(102)   

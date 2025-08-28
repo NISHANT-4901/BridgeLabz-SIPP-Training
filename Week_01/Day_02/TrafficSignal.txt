@@ -1,0 +1,40 @@
+enum TrafficLight {
+    RED
+    YELLOW
+    GREEN
+}
+
+class TrafficSignal {
+    Attribute currentLight  
+    Attribute timer       
+
+    Constructor(){
+        set currentLight = RED
+        set timer = 0
+    }
+
+    Method switchLight(){
+        if currentLight == RED then
+            set currentLight = GREEN
+        else if currentLight == GREEN then
+            set currentLight = YELLOW
+        else if currentLight == YELLOW then
+            set currentLight = RED
+    }
+
+    Method runSimulation(totalTime){
+        for t = 1 to totalTime:
+            Print "Time: " + t + " seconds, Light: " + currentLight
+            timer = timer + 1
+
+            if (currentLight == RED and timer == 5) then  
+                switchLight()
+                timer = 0
+            else if (currentLight == GREEN and timer == 4) then 
+                switchLight()
+                timer = 0
+            else if (currentLight == YELLOW and timer == 2) then 
+                switchLight()
+                timer = 0
+    }
+}

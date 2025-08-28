@@ -1,0 +1,28 @@
+class Member {
+    Attribute name
+    Attribute id
+    Attribute membershipDate   
+    Attribute validityPeriod   
+
+    Constructor(name, id, membershipDate, validityPeriod){
+        set name = name
+        set id = id
+        set membershipDate = membershipDate
+        set validityPeriod = validityPeriod
+    }
+
+    Method showDetails(){
+        Print name
+        Print id
+        Print membershipDate
+        Print validityPeriod
+    }
+
+    Method checkValidity(currentDate){
+        expiryDate = membershipDate + validityPeriod
+        if currentDate <= expiryDate then
+            Print "Membership is valid"
+        else
+            Print "Membership expired"
+    }
+}

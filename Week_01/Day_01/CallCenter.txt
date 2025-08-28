@@ -1,0 +1,50 @@
+class Customer {
+    Attribute name
+    Attribute priority   // "emergency" or "normal"
+
+    Constructor(name, priority){
+        set name = name
+        set priority = priority
+    }
+
+    Method show(){
+        Print name
+        Print priority
+    }
+}
+
+class CallCenterQueue {
+    Attribute emergencyQueue   // Queue for emergency customers
+    Attribute normalQueue      // Queue for normal customers
+
+    Constructor(){
+        set emergencyQueue = new Queue()
+        set normalQueue = new Queue()
+    }
+
+    Method addCustomer(customer){
+        if customer.priority == "emergency" then
+            enqueue customer into emergencyQueue
+        else
+            enqueue customer into normalQueue
+    }
+
+    Method serveCustomer(){
+        if emergencyQueue is not empty then
+            customer = dequeue from emergencyQueue
+        else if normalQueue is not empty then
+            customer = dequeue from normalQueue
+        else
+            Print "No customers in queue"
+        
+        if customer exists then
+            Print "Serving customer: " + customer.name + " (" + customer.priority + ")"
+    }
+
+    Method showQueues(){
+        Print "Emergency Queue: "
+        Print all customers in emergencyQueue
+        Print "Normal Queue: "
+        Print all customers in normalQueue
+    }
+}
