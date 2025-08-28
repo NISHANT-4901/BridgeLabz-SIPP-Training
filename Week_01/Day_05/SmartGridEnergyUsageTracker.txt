@@ -1,0 +1,70 @@
+class Reading {
+    Attribute meterID
+    Attribute consumption 
+
+    Constructor(meterID, consumption) {
+        set meterID = meterID
+        set consumption = consumption
+    }
+}
+
+class EnergyUsageTracker {
+    Attribute data  
+
+    Constructor() {
+        set data = new Map()
+    }
+
+    Method addReading(zone, day, reading) {
+        if data does not contain zone then
+            data[zone] = new Map()
+        zoneMap = data[zone]
+
+        if zoneMap does not contain day then
+            zoneMap[day] = new List()
+        dayList = zoneMap[day]
+
+        append reading to dayList
+    }
+
+    Method findPeakLoads() {
+        peakReport = new Map()  
+
+        for each zone in data.keys() do
+            zoneMap = data[zone]
+            peakReport[zone] = new Map()
+
+            for each day in zoneMap.keys() do
+                readings = zoneMap[day]
+                maxLoad = 0
+
+                for each reading in readings do
+                    if reading.consumption > maxLoad then
+                        maxLoad = reading.consumption
+
+                peakReport[zone][day] = maxLoad
+
+        return peakReport
+    }
+
+    Method displayPeakReport(peakReport) {
+        for each zone in peakReport.keys() do
+            Print "Zone: " + zone
+            for each day in peakReport[zone].keys() do
+                Print "  Day: " + day + " Peak Load: " + peakReport[zone][day] + " kW"
+    }
+}
+
+tracker = new EnergyUsageTracker()
+
+tracker.addReading("Zone-A", "2025-08-01", new Reading("M1", 120))
+tracker.addReading("Zone-A", "2025-08-01", new Reading("M2", 90))
+tracker.addReading("Zone-A", "2025-08-01", new Reading("M3", 200))
+tracker.addReading("Zone-A", "2025-08-01", new Reading("M4", 150))
+
+tracker.addReading("Zone-B", "2025-08-01", new Reading("M5", 300))
+tracker.addReading("Zone-B", "2025-08-01", new Reading("M6", 350))
+tracker.addReading("Zone-B", "2025-08-01", new Reading("M7", 250))
+
+peakReport = tracker.findPeakLoads()
+tracker.displayPeakReport(peakReport)

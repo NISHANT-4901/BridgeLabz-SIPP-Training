@@ -1,0 +1,87 @@
+class TrieNode {
+    Attribute children 
+    Attribute isEndOfWord
+    Attribute popularity
+    Attribute keyword
+
+    Constructor() {
+        set children = new Map()
+        set isEndOfWord = false
+        set popularity = 0
+        set keyword = ""
+    }
+}
+
+class Trie {
+    Attribute root
+
+    Constructor() {
+        set root = new TrieNode()
+    }
+
+    Method insert(keyword) {
+        current = root
+        for each char in keyword do
+            if char not in current.children then
+                current.children[char] = new TrieNode()
+            current = current.children[char]
+        current.isEndOfWord = true
+        current.keyword = keyword
+        current.popularity = 0
+    }
+
+    Method increasePopularity(keyword) {
+        current = root
+        for each char in keyword do
+            if char not in current.children then
+                return  // Keyword not found
+            current = current.children[char]
+        if current.isEndOfWord == true then
+            current.popularity = current.popularity + 1
+    }
+
+    Method search(prefix, N) {
+        current = root
+        for each char in prefix do
+            if char not in current.children then
+                return []
+            current = current.children[char]
+
+        results = new List()
+        call dfs(current, results)
+
+        sort results by popularity descending
+
+        return first N elements of results
+    }
+
+    Method dfs(node, results) {
+        if node.isEndOfWord == true then
+            append node to results
+
+        for each child in node.children.values() do
+            call dfs(child, results)
+    }
+}
+
+trie = new Trie()
+trie.insert("pizza hut")
+trie.insert("pizza point")
+trie.insert("pita bread")
+trie.insert("pizzeria")
+
+results1 = trie.search("pi", 3)
+for each node in results1 do
+    Print node.keyword + " (popularity: " + node.popularity + ")"
+
+trie.increasePopularity("pita bread")
+
+results2 = trie.search("pi", 3)
+for each node in results2 do
+    Print node.keyword + " (popularity: " + node.popularity + ")"
+
+trie.insert("pineapple cafe")
+
+results3 = trie.search("pi", 4)
+for each node in results3 do
+    Print node.keyword + " (popularity: " + node.popularity + ")"

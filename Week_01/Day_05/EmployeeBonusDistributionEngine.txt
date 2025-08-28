@@ -1,0 +1,74 @@
+class Employee {
+    Attribute name
+    Attribute department
+    Attribute rating
+    Attribute baseSalary
+
+    Constructor(name, department, rating, baseSalary) {
+        set name = name
+        set department = department
+        set rating = rating
+        set baseSalary = baseSalary
+    }
+}
+
+class BonusDistributionEngine {
+    Method groupByDepartment(employees) {
+        departmentMap = new Map() 
+        for each emp in employees do
+            if departmentMap does not contain emp.department then
+                departmentMap[emp.department] = new List()
+            append emp to departmentMap[emp.department]
+        return departmentMap
+    }
+
+    Method calculateTotalBonusPool(employees) {
+        totalSalary = 0
+        for each emp in employees do
+            totalSalary = totalSalary + emp.baseSalary
+        return totalSalary * 0.10
+    }
+
+    Method distributeBonus(departmentMap) {
+        bonusReport = new Map()  
+
+        for each department in departmentMap.keys() do
+            employees = departmentMap[department]
+            pool = calculateTotalBonusPool(employees)
+            totalRating = 0
+
+            for each emp in employees do
+                totalRating = totalRating + emp.rating
+
+            empBonusMap = new Map()
+
+            for each emp in employees do
+                empBonus = pool * (emp.rating / totalRating)
+                empBonusMap[emp.name] = empBonus
+
+            bonusReport[department] = empBonusMap
+
+        return bonusReport
+    }
+
+    Method displayBonusReport(bonusReport) {
+        for each department in bonusReport.keys() do
+            Print "Department: " + department
+            empBonusMap = bonusReport[department]
+            for each empName in empBonusMap.keys() do
+                Print "  Employee: " + empName + " Bonus: ₹" + empBonusMap[empName]
+    }
+}
+
+employees = [
+    new Employee("Emp-A", "IT", 5, 50000),
+    new Employee("Emp-B", "IT", 3, 40000),
+    new Employee("Emp-C", "IT", 2, 30000),
+    new Employee("Emp-D", "Finance", 4, 60000),
+    new Employee("Emp-E", "Finance", 1, 40000)
+]
+
+engine = new BonusDistributionEngine()
+deptMap = engine.groupByDepartment(employees)
+bonusReport = engine.distributeBonus(deptMap)
+engine.displayBonusReport(bonusReport)

@@ -1,0 +1,145 @@
+interface TaxCalculator {
+    Method calculateTax(amount)
+}
+
+class FoodTax implements TaxCalculator {
+    Method calculateTax(amount) {
+        return amount * 0.05
+    }
+}
+
+class BeverageTax implements TaxCalculator {
+    Method calculateTax(amount) {
+        return amount * 0.12
+    }
+}
+
+class ImportedTax implements TaxCalculator {
+    Method calculateTax(amount) {
+        return amount * 0.10
+    }
+}
+
+class LuxuryTax implements TaxCalculator {
+    Method calculateTax(amount) {
+        return amount * 0.15
+    }
+}
+
+class Item {
+    Attribute name
+    Attribute basePrice
+    Attribute taxCalculators  // List of TaxCalculator
+
+    Constructor(name, basePrice) {
+        set name = name
+        set basePrice = basePrice
+        set taxCalculators = new List()
+    }
+
+    Method addTaxCalculator(taxCalculator) {
+        append taxCalculator to taxCalculators
+    }
+
+    Method calculateTax() {
+        totalTax = 0
+        for each calculator in taxCalculators do
+            totalTax = totalTax + calculator.calculateTax(basePrice)
+        return totalTax
+    }
+
+    Method getPriceWithTax() {
+        return basePrice + calculateTax()
+    }
+}
+
+interface DiscountPolicy {
+    Method applyDiscount(amount)
+}
+
+class NoDiscount implements DiscountPolicy {
+    Method applyDiscount(amount) {
+        return amount
+    }
+}
+
+class FlatDiscount implements DiscountPolicy {
+    Attribute amountOff
+
+    Constructor(amountOff) {
+        set amountOff = amountOff
+    }
+
+    Method applyDiscount(amount) {
+        return amount - amountOff
+    }
+}
+
+class PercentageDiscount implements DiscountPolicy {
+    Attribute percentage
+
+    Constructor(percentage) {
+        set percentage = percentage
+    }
+
+    Method applyDiscount(amount) {
+        return amount * (1 - percentage / 100)
+    }
+}
+
+class BuyOneGetOneDiscount implements DiscountPolicy {
+    Method applyDiscount(amount) {
+        
+        return amount * 0.5
+    }
+}
+
+class BillingSystem {
+    Attribute items
+    Attribute discountPolicy
+
+    Constructor(discountPolicy) {
+        set items = new List()
+        set discountPolicy = discountPolicy
+    }
+
+    Method addItem(item) {
+        append item to items
+    }
+
+    Method calculateTotal() {
+        total = 0
+        for each item in items do
+            total = total + item.getPriceWithTax()
+        total = discountPolicy.applyDiscount(total)
+        return total
+    }
+}
+
+paneer = new Item("Paneer Tikka", 500)
+paneer.addTaxCalculator(new FoodTax())
+
+coke = new Item("Coke", 100)
+coke.addTaxCalculator(new BeverageTax())
+
+importedCheese = new Item("Imported Cheese", 800)
+importedCheese.addTaxCalculator(new FoodTax())
+importedCheese.addTaxCalculator(new ImportedTax())
+
+billing = new BillingSystem(new PercentageDiscount(10))
+billing.addItem(paneer)
+billing.addItem(coke)
+billing.addItem(importedCheese)
+
+Print "Total Bill: ₹" + billing.calculateTotal()
+
+billing.discountPolicy = new BuyOneGetOneDiscount()
+Print "Bill with BOGO discount: ₹" + billing.calculateTotal()
+
+premiumItem = new Item("Premium Chocolate", 1000)
+premiumItem.addTaxCalculator(new FoodTax())
+premiumItem.addTaxCalculator(new LuxuryTax())
+
+billing.addItem(premiumItem)
+billing.discountPolicy = new NoDiscount()
+Print "Bill with Luxury tax added: ₹" + billing.calculateTotal()

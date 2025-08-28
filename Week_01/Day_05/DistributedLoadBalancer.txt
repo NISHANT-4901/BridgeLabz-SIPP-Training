@@ -1,0 +1,53 @@
+class LoadBalancer {
+    Attribute serverQueue
+
+    Constructor(servers) {
+        set serverQueue = new Queue()
+        for each server in servers do
+            serverQueue.enqueue(server)
+    }
+
+    Method addServer(server) {
+        serverQueue.enqueue(server)
+    }
+
+    Method removeServer(server) {
+        tempQueue = new Queue()
+        while serverQueue is not empty do
+            currentServer = serverQueue.dequeue()
+            if currentServer != server then
+                tempQueue.enqueue(currentServer)
+        serverQueue = tempQueue
+    }
+
+    Method assignRequest(request) {
+        if serverQueue is empty then
+            Print "No servers available for request " + request
+            return
+
+        server = serverQueue.dequeue()
+        Print request + " → " + server
+        serverQueue.enqueue(server)
+    }
+
+    Method processRequests(requests) {
+        for each request in requests do
+            assignRequest(request)
+    }
+}
+
+servers = ["S1", "S2", "S3"]
+lb = new LoadBalancer(servers)
+
+requests1 = ["R1", "R2", "R3"]
+lb.processRequests(requests1)
+
+lb.addServer("S4")
+
+requests2 = ["R4", "R5"]
+lb.processRequests(requests2)
+
+lb.removeServer("S2")
+
+requests3 = ["R6", "R7", "R8"]
+lb.processRequests(requests3)
