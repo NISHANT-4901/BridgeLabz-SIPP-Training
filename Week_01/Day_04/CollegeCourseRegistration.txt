@@ -1,0 +1,57 @@
+class Student {
+    Attribute studentID
+    Attribute name
+
+    Constructor(studentID, name) {
+        set studentID = studentID
+        set name = name
+    }
+}
+
+class Course {
+    Attribute courseID
+    Attribute courseName
+
+    Constructor(courseID, courseName) {
+        set courseID = courseID
+        set courseName = courseName
+    }
+}
+
+class CourseRegistration {
+    Attribute courseMap
+
+    Constructor() {
+        set courseMap = new Map()  // Map<Course, List<Student>>
+    }
+
+    Method addStudentToCourse(course, student) {
+        if courseMap contains course then
+            append student to courseMap[course]
+        else
+            courseMap[course] = new List()
+            append student to courseMap[course]
+    }
+
+    Method displayStudentsPerCourse() {
+        for each course in courseMap.keys() do
+            Print "Course: " + course.courseName + " (" + course.courseID + ")"
+            for each student in courseMap[course] do
+                Print " Student: " + student.name + " (" + student.studentID + ")"
+    }
+}
+
+c1 = new Course("CS101", "Computer Science")
+c2 = new Course("MATH201", "Mathematics")
+
+s1 = new Student("S001", "Alice")
+s2 = new Student("S002", "Bob")
+s3 = new Student("S003", "Charlie")
+
+registration = new CourseRegistration()
+registration.addStudentToCourse(c1, s1)
+registration.addStudentToCourse(c1, s2)
+registration.addStudentToCourse(c2, s2)
+registration.addStudentToCourse(c2, s3)
+
+registration.displayStudentsPerCourse()

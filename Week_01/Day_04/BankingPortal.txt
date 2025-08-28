@@ -1,0 +1,74 @@
+class Account {
+    Attribute accountNumber
+    Attribute holderName
+    Attribute balance
+
+    Constructor(accountNumber, holderName, balance) {
+        set accountNumber = accountNumber
+        set holderName = holderName
+        set balance = balance
+    }
+
+    Method deposit(amount) {
+        balance = balance + amount
+        Print "Deposited: " + amount
+    }
+
+    Method withdraw(amount) {
+        if balance >= amount then
+            balance = balance - amount
+            Print "Withdrawn: " + amount
+        else
+            Print "Insufficient balance"
+    }
+
+    Method showDetails() {
+        Print "Account No: " + accountNumber
+        Print "Holder: " + holderName
+        Print "Balance: " + balance
+    }
+}
+
+class SavingAccount extends Account {
+    Attribute minBalance
+
+    Constructor(accountNumber, holderName, balance, minBalance) {
+        call super(accountNumber, holderName, balance)
+        set minBalance = minBalance
+    }
+
+    Method withdraw(amount) {
+        if balance - amount >= minBalance then
+            balance = balance - amount
+            Print "Withdrawn from Saving: " + amount
+        else
+            Print "Cannot withdraw. Minimum balance rule violated!"
+    }
+}
+
+class CurrentAccount extends Account {
+    Attribute overdraftLimit
+
+    Constructor(accountNumber, holderName, balance, overdraftLimit) {
+        call super(accountNumber, holderName, balance)
+        set overdraftLimit = overdraftLimit
+    }
+
+    Method withdraw(amount) {
+        if balance + overdraftLimit >= amount then
+            balance = balance - amount
+            Print "Withdrawn from Current: " + amount
+        else
+            Print "Cannot withdraw. Overdraft limit exceeded!"
+    }
+}
+
+customer1 = new SavingAccount("S101", "Alice", 5000, 1000)
+customer2 = new CurrentAccount("C202", "Bob", 2000, 3000)
+
+customer1.showDetails()
+customer1.withdraw(4500)
+customer1.withdraw(3000)
+
+customer2.showDetails()
+customer2.withdraw(4500)

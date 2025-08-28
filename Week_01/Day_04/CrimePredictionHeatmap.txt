@@ -1,0 +1,75 @@
+class Zone {
+    Attribute zoneID
+    Attribute riskLevel
+    Attribute neighbors
+
+    Constructor(zoneID, riskLevel) {
+        set zoneID = zoneID
+        set riskLevel = riskLevel
+        set neighbors = new List()
+    }
+
+    Method addNeighbor(zone) {
+        append zone to neighbors
+    }
+}
+
+class CrimeGraph {
+    Attribute zones
+
+    Constructor() {
+        set zones = new Dictionary()
+    }
+
+    Method addZone(zoneID, riskLevel) {
+        zone = new Zone(zoneID, riskLevel)
+        zones[zoneID] = zone
+    }
+
+    Method addEdge(zoneID1, zoneID2) {
+        zone1 = zones[zoneID1]
+        zone2 = zones[zoneID2]
+        zone1.addNeighbor(zone2)
+        zone2.addNeighbor(zone1)
+    }
+
+    Method DFS(startZoneID, visited, highRiskZones, threshold) {
+        zone = zones[startZoneID]
+        visited.add(startZoneID)
+
+        if zone.riskLevel >= threshold then
+            append zone to highRiskZones
+
+        for each neighbor in zone.neighbors do
+            if neighbor.zoneID not in visited then
+                call DFS(neighbor.zoneID, visited, highRiskZones, threshold)
+    }
+
+    Method findHighRiskAreas(threshold) {
+        visited = new Set()
+        highRiskZones = new List()
+
+        for each zoneID in zones.keys() do
+            if zoneID not in visited then
+                call DFS(zoneID, visited, highRiskZones, threshold)
+
+        return highRiskZones
+    }
+}
+
+graph = new CrimeGraph()
+graph.addZone("A", 70)
+graph.addZone("B", 30)
+graph.addZone("C", 90)
+graph.addZone("D", 60)
+graph.addZone("E", 50)
+
+graph.addEdge("A", "B")
+graph.addEdge("A", "C")
+graph.addEdge("B", "D")
+graph.addEdge("C", "E")
+
+highRiskZones = graph.findHighRiskAreas(60)
+
+for each zone in highRiskZones do
+    Print "High Risk Zone: " + zone.zoneID + " with risk level " + zone.riskLevel

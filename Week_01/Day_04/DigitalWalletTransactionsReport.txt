@@ -1,0 +1,66 @@
+class Transaction {
+    Attribute transactionID
+    Attribute merchant
+    Attribute amount
+    Attribute date  
+
+    Constructor(transactionID, merchant, amount, date) {
+        set transactionID = transactionID
+        set merchant = merchant
+        set amount = amount
+        set date = date
+    }
+}
+
+class TransactionsReport {
+    Method extractMonth(date) {
+        return substring of date from index 0 to 7 
+    }
+
+    Method groupByMerchantAndMonth(transactions) {
+        grouped = new Map()  // Map<String, Map<String, List<Transaction>>>
+        
+        for each transaction in transactions do
+            merchantMap = grouped.get(transaction.merchant)
+            if merchantMap is null then
+                merchantMap = new Map()
+                grouped[transaction.merchant] = merchantMap
+            
+            month = extractMonth(transaction.date)
+            monthList = merchantMap.get(month)
+            if monthList is null then
+                monthList = new List()
+                merchantMap[month] = monthList
+            
+            append transaction to monthList
+        
+        return grouped
+    }
+
+    Method generateSummaryReport(transactions) {
+        grouped = groupByMerchantAndMonth(transactions)
+
+        for each merchant in grouped.keys() do
+            Print "Merchant: " + merchant
+            merchantMap = grouped[merchant]
+            for each month in merchantMap.keys() do
+                totalAmount = 0
+                count = 0
+                for each transaction in merchantMap[month] do
+                    totalAmount = totalAmount + transaction.amount
+                    count = count + 1
+
+                Print " Month: " + month + " | Transactions: " + count + " | Total: " + totalAmount
+    }
+}
+
+transactions = [
+    new Transaction("T001", "Amazon", 150, "2025-06-15"),
+    new Transaction("T002", "Amazon", 200, "2025-06-20"),
+    new Transaction("T003", "eBay", 100, "2025-07-01"),
+    new Transaction("T004", "Amazon", 300, "2025-07-18"),
+    new Transaction("T005", "eBay", 50, "2025-06-25")
+]
+
+report = new TransactionsReport()
+report.generateSummaryReport(transactions)

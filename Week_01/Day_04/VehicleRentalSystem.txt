@@ -1,0 +1,83 @@
+interface Rentable {
+    Method rent()
+    Method returnVehicle()
+}
+
+abstract class Vehicle implements Rentable {
+    Attribute vehicleNumber
+    Attribute brand
+    Attribute rented
+
+    Constructor(vehicleNumber, brand) {
+        set vehicleNumber = vehicleNumber
+        set brand = brand
+        set rented = false
+    }
+
+    Method rent() {
+        if rented == false then
+            rented = true
+            Print "Vehicle rented: " + brand + " (" + vehicleNumber + ")"
+        else
+            Print "Already rented"
+    }
+
+    Method returnVehicle() {
+        if rented == true then
+            rented = false
+            Print "Vehicle returned: " + brand + " (" + vehicleNumber + ")"
+        else
+            Print "This vehicle is not rented"
+    }
+
+    Abstract Method showDetails()
+}
+
+class Car extends Vehicle {
+    Attribute seats
+
+    Constructor(vehicleNumber, brand, seats) {
+        call super(vehicleNumber, brand)
+        set seats = seats
+    }
+
+    Method showDetails() {
+        Print "Car: " + brand + " | " + vehicleNumber + " | Seats: " + seats
+    }
+}
+
+class Bike extends Vehicle {
+    Attribute engineCC
+
+    Constructor(vehicleNumber, brand, engineCC) {
+        call super(vehicleNumber, brand)
+        set engineCC = engineCC
+    }
+
+    Method showDetails() {
+        Print "Bike: " + brand + " | " + vehicleNumber + " | Engine: " + engineCC + "cc"
+    }
+}
+
+class VehicleFactory {
+    Method createVehicle(type, vehicleNumber, brand, value) {
+        if type == "car" then
+            return new Car(vehicleNumber, brand, value)
+        else if type == "bike" then
+            return new Bike(vehicleNumber, brand, value)
+        else
+            Print "Unknown vehicle type"
+            return null
+    }
+}
+
+factory = new VehicleFactory()
+v1 = factory.createVehicle("car", "CAR101", "Toyota", 5)
+v2 = factory.createVehicle("bike", "BIKE202", "Honda", 150)
+
+v1.showDetails()
+v1.rent()
+v1.returnVehicle()
+
+v2.showDetails()
+v2.rent()
